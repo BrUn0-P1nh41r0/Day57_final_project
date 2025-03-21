@@ -15,8 +15,15 @@ def post_info(num):
     for data in post:
         if data["id"] == int(num):
             post_div.append(data)
-    print(post_div)
     return render_template("post.html", post=post_div)
+
+@app.route('/about')
+def about():
+    return render_template("about.html")
+
+@app.route('/contact')
+def contact():
+    return render_template("contact.html")
 
 
 if __name__ == "__main__":

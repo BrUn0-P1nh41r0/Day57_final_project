@@ -1,28 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway" rel="stylesheet">
-    <link rel="stylesheet" href="../static/css/styles.css">
-</head>
-<body>
-<div class="wrapper">
-    <div class="top">
-        <div class="title"><h1>My Blog</h1></div>
-           </div>
-        <div class="content">
-            {% for data in post%}
-            <div class="card">
-                <h1>{{data["title"]}}</h1>
-                <h2>{{data["subtitle"]}}</h2>
-                <p>{{data["body"]}}</p>
+{%include 'header.html'%}
+    <body>
+    {% for data in post%}
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('{{data['image_url']}}')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1>{{data["title"]}}</h1>
+                            <h2 class="subheading">{{data["subtitle"]}}</h2>
+                            <span class="meta">
+                                Posted by
+                                <a href="#!">Bruno</a>
+                                on August 24, 2023
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            {% endfor %}
-    </div>
-</div>
-</body>
-<footer>
-    <p>Made with ♥️ in Portugal.</p>
-</footer>
+        </header>
+        <!-- Post Content-->
+        <article class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        {{data["body"]}}
+                    </div>
+                </div>
+            </div>
+        </article>
+    {% endfor %}
+        <!-- Footer-->
+        {%include 'footer.html'%}
+    </body>
 </html>
