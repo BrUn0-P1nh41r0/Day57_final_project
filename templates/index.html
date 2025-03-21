@@ -1,29 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway" rel="stylesheet">
-    <link rel="stylesheet" href="../static/css/styles.css">
-</head>
-<body>
-<div class="wrapper">
-    <div class="top">
-        <div class="title"><h1>My Blog</h1></div>
-    </div>
-    {% for blog_post in post %}
-        <div class="content">
-            <div class="card">
-                <h2>{{blog_post["title"]}}</h2>
-                <p>{{blog_post["subtitle"]}}</p>
-                <a href="{{ url_for('post_info', num=blog_post['id']) }}">Read</a>
+{% include 'header.html' %}
+    <body>
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('static/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="site-heading">
+                            <h1>Bruno's Blog</h1>
+                            <span class="subheading">A collection of Bruno's random nonsense</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    {% for blog_post in post %}
+                    <div class="post-preview">
+                        <a href="{{ url_for('post_info', num=blog_post['id']) }}">
+                            <h2 class="post-title">{{blog_post["title"]}}</h2>
+                            <h3 class="post-subtitle">{{blog_post["subtitle"]}}</h3>
+                        </a>
+                        <p class="post-meta">
+                            Posted by
+                            <a href="#!">Bruno</a>
+                            on September 24, 2023
+                        </p>
+                    </div>
+                    <hr class="my-4" />
+                    {% endfor %}
+                </div>
             </div>
         </div>
-    {% endfor %}
-
-</div>
-</body>
-<footer>
-    <p>Made with ♥️ in Portugal.</p>
-</footer>
+        {% include 'footer.html' %}
+    </body>
 </html>

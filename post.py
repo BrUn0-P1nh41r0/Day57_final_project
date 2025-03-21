@@ -1,6 +1,6 @@
 import requests
 
-BLOG_URL = "https://api.npoint.io/c790b4d5cab58020d391"
+BLOG_URL = "https://api.npoint.io/674f5423f73deab1e9a7"
 
 class Post:
     def __init__(self):
